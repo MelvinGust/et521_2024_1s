@@ -40,11 +40,22 @@
 
 \usepackage{chngcntr, amsmath, amsthm, amsfonts, fancyhdr, float, graphicx, hyperref, xcolor, multicol, multirow, pgfplots, titlesec, titling, soul, subcaption}
 
+\usepackage{esint} % Este pacote permite a escrita de integrais fechadas no documento.
 
-\hypersetup{
-    hidelinks,
-    pdftitle={[ET521] Relatório 01}
+\newcounter{counterquestions}
+
+\newenvironment{questions}{
+    \noindent
+    \stepcounter{counterquestions}
+    \textbf{Questão\:\thecounterquestions\:-}
+    \noindent
+}{
+    \noindent
 }
+
+% \newlist{questions}{enumerate}{1}
+% \setlist[questions]{label=\arabic*., wide=0pt, font=\bfseries}
+% \let\question=\item
 
 \graphicspath{ {../Imagens/Sem01} } % Caminho para acessar as imagens que iremos utilizar neste documento.
 
@@ -98,9 +109,10 @@
         {\huge\bfseries Propriedades de Circuitos Magnéticos\par}
         \vspace{2cm}
         \textbf{Alunos}\par
+        Bianca Giovanna de Castro Fernandez (166973) \par\par
+        Ivan de Sousa Oliveira (206473) \par\par
         Melvin Gustavo Maradiaga Elvir (185068) \par\par
-        Bianca Giovanna (---) \par\par
-        Ivan (---)
+        Vinicius dos Santos Ribeiro (206643) \par
         \vfill
     % Bottom of the page
         {\large \today\par}
@@ -111,7 +123,42 @@
         \section{Introdução}
 
         \section{Discussão}
-
+        \begin{questions}
+            Como é possível obter tensões (ou correntes) elétricas a partir de fluxo magnético? Exemplifique com duas alternativas distintas.
+        \end{questions}
+            
+        A partir do fluxo magnético, é possível obter tensão e corrente elétrica por conta da Lei de Faraday e por conta do comportamento encapsulado na forma integral da equação de Maxwell-Faraday \cite{maxwell1}:
+        \begin{align*}
+            \oint_{C}\vec{E}\circ d\vec{l} &=-\int_{S}\frac{\partial \vec{B}}{\partial t}\circ\hat{n}dA \\
+            fem = -\frac{d}{dt}\int_{S}\vec{B}\circ\hat{n}dA 
+        \end{align*}
+        Observe-se que segundo a Lei de Faraday, ao induzirmos um fluxo variante no tempo, iremos gerar uma força eletromotriz (fem) em \textbf{oposição} a essa mudança de fluxo.
+        Olhando agora a equação de Maxwell-Faraday, perceba-se que toda mudança na densidade de fluxo magnético passando no meio de uma superficie
+        
+        
+        \begin{questions}
+            Na distribuição do campo magnético obtida através de um eletroímã com núcleo em forma de U sob a placa de acrílico:
+            \begin{itemize}[noitemsep,topsep=0pt]
+                \item[\textbf{(a)}]{Existe influência da natureza da corrente (contínua ou alternada)? Por quê?}
+                \item[\textbf{(b)}]{A presença de material metálico sob a placa resulta em alguma modificação na distribuição do campo magnético? Exemplifique.}
+            \end{itemize}
+        \end{questions}
+        
+        \begin{questions}
+            Na montagem identificada como anéis de Thompson:
+            \begin{itemize}[noitemsep,topsep=0pt]
+                \item[\textbf{(a)}]{Existe influência da natureza da corrente (contínua ou alternada)? Por quê?}
+                \item[\textbf{(b)}]{A presença de material metálico sob a placa resulta em alguma modificação na distribuição do campo magnético? Exemplifique.}
+            \end{itemize}
+        \end{questions}
+        
+        \begin{questions}
+            Desenhe o circuito utilizado para a visualização do laço de histerese do material magnético de um dispositivo eletromagnético e esboce os laços de histerese obtidos com a bobina em núcleo fechado e com um dos enrolamentos do transformador preto. Comente a respeito.
+        \end{questions}
+        
+        \begin{questions}
+            O que é essencial para o funcionamento tanto do experimento de Ruhmkorff como da ignição automotiva tradicional? Qual é a diferença básica entre eles, sob o ponto de vista eletromagnético
+        \end{questions}
         \newpage
      % Sem isso LaTeX precisa de citações para acrescebtar a bibliografia
     % \printbibliography
