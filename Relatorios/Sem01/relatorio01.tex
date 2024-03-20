@@ -92,43 +92,74 @@
 % Criei isso aqui pra uniformizar os itens dos experimentos.
 \newenvironment{expitem}{\par\medskip\noindent\minipage{\linewidth}\setlength{\parindent}{1.5em}\bfseries\noindent\textbullet\ }{\endminipage\par\smallskip}
 
-\begin{document}        
-    \def\figscale{0.8} 
-     % Multiplicador do tamanho da imagem em relação ao comprimento da linha. Atualmente em 80%.
+%
+%
+%
+%
+%
+%
+%
+%
+
+% Início do documento
+\begin{document}
     
-    % Os contadores das equações, figuras e tabelas agora são globais e não dependem mais de outros contadores
+    % Define o multiplicador do tamanho da imagem em relação ao comprimento da linha (valor atual: 80%)
+    \def\figscale{0.8}
+    
+    % Define os contadores das equações, figuras e tabelas como globais, isto é, não dependentes de outros contadores
     \counterwithout{equation}{section}
     \counterwithout{figure}{section}
     \counterwithout{table}{section}
     
+    % Início do título do documento
     \begin{titlepage}
+    
+        % Centraliza o título
         \centering
     
-        {\LARGE \textsc{Universidade Estadual de Campinas}\par}
-        {\Large \textsc{Faculdade de Engenharia Elétrica e de Computação}\par}
-        \vspace{1cm}
-        {\Large \textsc{Relatório 01}\par}
+        {\Large \textsc{Universidade Estadual de Campinas (UNICAMP)}\par}
         \vspace{1.5cm}
-        {\huge\bfseries Propriedades de Circuitos Magnéticos\par}
-        \vspace{2cm}
-        \textbf{Alunos}\par
+        {\large \textsc{Faculdade de Engenharia Elétrica e de Computação (FEEC)}\par}
+        \vspace{3cm}
+        {\large ET521 - Laboratório de Princípios de Conversão de Energia\par}
+        \vspace{0.5cm}
+        {\large Relatório 01\par}
+        \vspace{3cm}
+        {\LARGE \bfseries{Propriedades de Circuitos Magnéticos}\par}
+        \vspace{3cm}
+        %\textbf{Alunos}\par
         Bianca Giovanna de Castro Fernandez (166973) \par\par
         Ivan de Sousa Oliveira (206473) \par\par
         Melvin Gustavo Maradiaga Elvir (185068) \par\par
-        Vinicius dos Santos Ribeiro (206643) \par
+        Vinícius dos Santos Ribeiro (206643)
         \vfill
-    % Bottom of the page
+    
+        % Adiciona a data do dia no final da página
         {\large \today\par}
+        
+    % Término do título do documento
     \end{titlepage}
     
+    % Início do texto do documento
     \newpage
-        \noindent
+    
+        %\noindent
+        
         \section{Introdução}
+        
         \hspace{0.5cm} Neste primeiro laboratório realizamos sete experimentos com a finalidade de compreender alguns fenômenos do eletromagnetismo, como a indução magnética descrita pela Lei de Faraday (Equação \ref{eq:1}) e o surgimento de fluxo magnético por conta de uma corrente, descrito pela Lei de Maxwell-Ampere (Equação \ref{eq:2}). Assim, aprofundamos em algumas das aplicações comuns destes princípos, olhando para circuitos magnéticos --e como consequência, transformadores e eletroimães-- e estudando as interações que o campo magnético que eles produzem junto com sua interação com outros componentes elétricos.
         
-        \section{Discussão}
+        \section{Desenvolvimento}
+        
+        % Apesar de parecer estranho (inclusive para mim), acredito que podemos nomear esta seção como "desenvolvimento". Seguindo os padrões da ABNT, o texto do trabalho deve ser dividido em: introdução, desenvolvimento (onde estão inclusos: a revisão bibliográfica, a metodologia, os resultados e a discussão) e conclusão. Não precisamos seguir a ABNT, mas como esta parte é uma mistura de procedimento experimental, resultados e discussão, acho que podemos adotar o termo "desenvolvimento". Vejam se isso faz sentido para vocês. Se não fizer, de boa. O PED não passou modelo mesmo e, como diria um belo de um ditado popular, "pra quem não sabe o que quer, qualquer caminho serve" (e aqui me refiro ao PED) - Assinado: Vini.
+        
+        %
+        %
+        %
         
         % PESSOAL, TODA ESTA SEÇÃO DO COMEÇO PODE SER ELIMINADA SE ACHAREM ISSO MELHOR.
+        % Acho que podemos jogar as equações dentro das discussões do experimento. Claro que todos eles usam, por exemplo, a equação (1). Neste caso, bastaria colocar a equação (1) dentro da discussão do primeiro experimento e apenas indica-la no texto dos demais, como: "vide Equação 1". De qualquer forma, vocês que sabem. No fundo, dá na mesma - Assinado: Vini.
         Prévio a discussão dos experimentos, precisamos descrever as seguintes equações:
         \begin{equation}
             \begin{split}
@@ -144,10 +175,23 @@
         A equação \ref{eq:1} estabelece que a variação do fluxo magnético num superficie induz uma tensão \textit{em oposição} a dita variação de fluxo. Para fins de compreensão, podemos pensar numa situação semelhante à Figura N, onde 
         
         Já a equação \ref{eq:2} relaciona a presença de uma corrente e um campo elétrico variante no tempo com o surgimento de um campo magnético num caminho fechado.
+        
+        %
+        %
+        %
+        
         % SEÇÃO DA Bianca
         
+        %
+        %
+        %
+        
         % SEÇÃO DO Melvin
+        
         \subsection{Freio Eletromagnético}
+        
+        %A CORRENTE QUE ESTA SENDO INDUZIDA É CONHECIDA COMO CORRENTE DE FOCAULT https://en.wikipedia.org/wiki/Eddy_current, PRECISO FALAR SOBRE ISSO
+        % NA SEGUNDA PLACA ESTAMOS TENDO UM EFEITO SEMELHANTE ÁS LAMINAÇÕES USADAS NO NUCLEO DE TRANSFORMADORES PARA REDUZIR A INTENSIDADE DA CORRENTE PARASITA
         
         O experimento foi montado conforme mostrado na Figura N, onde utilizamos dois tipos de placas metálicas distintas, mostradas na Figura N. Cada placa foi colocada no meio do entreferro no núcleo que passa pelo nosso eletroimã, onde a placa irá se movimentar perpendicularmente á ponta do núcleo, mantendo um movimento oscilatório igual ao de um pêndulo.
         
@@ -174,11 +218,29 @@
         
         %INSERIR FOTO COM DUAS SUBFIGURAS, UMA COM A BARRA MAIS PARA DENTRO, OUTRA COM A BARRA MAIS PARA FORA
         
+        %
+        %
+        %
 
         % SEÇÃO DO Ivan
-        % SEÇÃO DO Vinicius
         
-        \section{Pre-laboratório}
+        %
+        %
+        %
+        
+        % SEÇÃO DO Vinícius
+        
+        \subsection{Laço de Histerese}
+        
+        Certo. Amanhã, vou completar esta seção e revisar as questões pré-laboratoriais e a introdução. Na quinta, vou estar livre para ajudar quem não tiver completado a sua seção ainda. Estamos bem com o prazo. Tenho um resumo em mente de cada parte do experimento. Logo, não será problema descrever algumas coisas a mais aqui e ali, se necessário.
+        
+        %\section{Conclusão} % Basta manter esta linha comentada se, de fato, não houver uma conclusão geral.
+        
+    % Início das questões pré-laboratoriais
+    \newpage
+        
+        \section{Questões Pré-laboratoriais}
+        
         Nesta seção respondimos as questões preparatórias para o laboratório descrito neste relatório. 
         
         \begin{questions}
@@ -241,8 +303,12 @@
         
         Em ambos os casos, uma bobina deve possuir poucos enrolamentos e a outra deve possuir inúmeros (milhares) de enrolamentos. O objetivo disso é aumentar a quantidade de fluxo concatenado (enlaçado) e, portanto, aumentar a tensão. De modo simplificado, a bobina de Ruhmkorff é um elevador de tensão. Capaz de produzir milhares de volts com baterias de 6 ou 8 V. Não encontrei a diferença entre as bobinas.
         
-        \newpage
-     % Sem isso LaTeX precisa de citações para acrescebtar a bibliografia
-    % \printbibliography
+    % Início das referências
+    \newpage
+    
+        \section{Referências} % Se não houver referências, basta comentar esta linha.
+    
+    % \printbibliography % Sem isso, o LaTeX precisa de citações para acrescentar a bibliografia
 
+% Término do documento
 \end{document}
