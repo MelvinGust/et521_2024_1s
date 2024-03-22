@@ -1,12 +1,4 @@
 % Relatorio 01 : Propriedades de Circuitos Magnéticos
-% ---------------------------------------------------
-% 
-% Este documento está formatado seguindo o que cheguei a entender das normas ABNT com algumas mudanças para facilitar nossa vida no momento de formatar ele. Caso seja desnecessário ou haja um erro, sintam-se a vontade de modificar o formato do documento.
-% Note-se que o formato que estou utilizando foi montado em cima de um que o Lucas Oliver tinha feito, pelo qual pode ser que hajam pacotes ou algums "detalhes" desnecesários. Se for o caso, podemos trocar sem problema.
-%
-% Dúvidas para tirar: 
-% - Quanto seria um interlinhado de 1,5? Esse tamanho tanto em LaTeX como em Word não possui convenção, fazendo que ele seja distinto dependendo de como o implemente (com setspace ou sem). Exemplo: https://tex.stackexchange.com/questions/65849/confusion-onehalfspacing-vs-spacing-vs-word-vs-the-world
-% - Iremos usar Biblatex? Se sim, talvez hajam bugs no momento de compilar. Se não, iremos redatar a bibliografia de forma manual.
 
 % Pacote usado para definir formatação básica do pdf, como tamanho de fonte e página.
 \documentclass[12pt, a4paper, notitlepage]{article}
@@ -21,17 +13,12 @@
 
 % Pacotes utilizados para definir a geometria e tamanho das páginas
 \usepackage{geometry} 
-\geometry{
-    a4paper,
-    left=30mm, right=20mm,
-    top=30mm, bottom=20mm
-}
+\geometry{a4paper, left=30mm, right=20mm, top=30mm, bottom=20mm}
 \usepackage{setspace} % Note-se que o uso de setspace é chato. Dependendo do jornal, é uma boa ideia mudar.
 \onehalfspacing
-% \usepackage{indentfirst} % Este pacote só serve para ter interlinhado no começo de cada parragrafo. Na minha visão pessoal, o documento fica feio assim, mas existem as convenções por algum motivo.
 
 % Configuração de Biblatex para citações
-\usepackage[style=numeric, backend=biber]{biblatex} % Isso aqui é só para botar referências bonitas.
+\usepackage[style=chem-rsc, backend=biber]{biblatex} % Isso aqui é só para botar referências bonitas.
 \addbibresource{refs.bib}
 \nocite{*}
 
@@ -44,6 +31,7 @@
 
 \usepackage{tikz} % Estes pacotes permitem o desenho de figuras/circuitos dentro do documento de LaTeX
 \usepackage{circuitikz}
+\usepackage{physics}
 
 \newcounter{counterquestions}
 
@@ -60,7 +48,7 @@
 % \setlist[questions]{label=\arabic*., wide=0pt, font=\bfseries}
 % \let\question=\item
 
-\graphicspath{ {./../../Imagens/} } % Caminho para acessar as imagens que iremos utilizar neste documento.
+\graphicspath{ {./../../Imagens/Sem01/} } % Caminho para acessar as imagens que iremos utilizar neste documento.
 
 % \pgfplotsset{width=7.5cm, compat=1.18, every tick label/.append style={font=\tiny}}
 \tikzset{>=latex}
@@ -74,9 +62,7 @@
 \lfoot{}
 \cfoot{}
 \rfoot{\thepage}
-\setlength{\parindent}{0pt}
 \setlength{\parskip}{0.2cm}
-%\setlength{\parindent}{.5cm} % Valor padrão. Norma ABNT diz que deve ser 1.5cm.
 \setlength{\headheight}{15pt} % Requisito para compilar
 \setlength{\parsep}{0pt}
 \setlength{\topsep}{0pt}
@@ -92,14 +78,11 @@
 % Criei isso aqui pra uniformizar os itens dos experimentos.
 \newenvironment{expitem}{\par\medskip\noindent\minipage{\linewidth}\setlength{\parindent}{1.5em}\bfseries\noindent\textbullet\ }{\endminipage\par\smallskip}
 
-%
-%
-%
-%
-%
-%
-%
-%
+
+% Indentação dos parágrafos
+\setlength{\parindent}{1.25cm}
+\usepackage{indentfirst}
+
 
 % Início do documento
 \begin{document}
@@ -141,118 +124,313 @@
     % Término do título do documento
     \end{titlepage}
     
-    % Início do texto do documento
     \newpage
-    
-        %\noindent
         
         \section{Introdução}
         
-        \hspace{0.5cm} Neste primeiro laboratório realizamos sete experimentos com a finalidade de compreender alguns fenômenos do eletromagnetismo, como a indução magnética descrita pela Lei de Faraday (Equação \ref{eq:1}) e o surgimento de fluxo magnético por conta de uma corrente, descrito pela Lei de Maxwell-Ampere (Equação \ref{eq:2}). Assim, aprofundamos em algumas das aplicações comuns destes princípos, olhando para circuitos magnéticos --e como consequência, transformadores e eletroimães-- e estudando as interações que o campo magnético que eles produzem junto com sua interação com outros componentes elétricos.
+        Neste laboratório, foram realizados sete experimentos distintos com a finalidade de compreender alguns dos fenômenos físicos descritos pela teoria eletromagnética. Dentre eles, estão: a indução eletromagnética, modelada pela lei de Faraday (Equação \ref{eq:1}) ou pela equação de Maxwell-Faraday (Equação \ref{eq:1}); e a geração de campo magnético por meio de um filamento de corrente, modelada pela lei de Maxwell-Ampère (Equação \ref{eq:3}). Os equipamentos utilizados são comuns a diversas aplicações da vida cotidiana, como: eletroímãs e transformadores, oferecendo, ainda, a possibilidade de estudar as interações entre os circuitos magnéticos, os circuitos elétricos e o ambiente.
         
         \section{Desenvolvimento}
         
-        % Apesar de parecer estranho (inclusive para mim), acredito que podemos nomear esta seção como "desenvolvimento". Seguindo os padrões da ABNT, o texto do trabalho deve ser dividido em: introdução, desenvolvimento (onde estão inclusos: a revisão bibliográfica, a metodologia, os resultados e a discussão) e conclusão. Não precisamos seguir a ABNT, mas como esta parte é uma mistura de procedimento experimental, resultados e discussão, acho que podemos adotar o termo "desenvolvimento". Vejam se isso faz sentido para vocês. Se não fizer, de boa. O PED não passou modelo mesmo e, como diria um belo de um ditado popular, "pra quem não sabe o que quer, qualquer caminho serve" (e aqui me refiro ao PED) - Assinado: Vini.
-        
-        %
-        %
-        %
-        
-        % PESSOAL, TODA ESTA SEÇÃO DO COMEÇO PODE SER ELIMINADA SE ACHAREM ISSO MELHOR.
-        % Acho que podemos jogar as equações dentro das discussões do experimento. Claro que todos eles usam, por exemplo, a equação (1). Neste caso, bastaria colocar a equação (1) dentro da discussão do primeiro experimento e apenas indica-la no texto dos demais, como: "vide Equação 1". De qualquer forma, vocês que sabem. No fundo, dá na mesma - Assinado: Vini.
-        Prévio a discussão dos experimentos, precisamos descrever as seguintes equações:
-        \begin{equation}
-            \begin{split}
-            fem &= -\frac{d}{dt}\int_{S}(\vec{B}\circ\hat{n})dA \\
-            \oint_{C}\vec{E}\circ d\vec{l} &= -\int_{S}(\frac{\partial \vec{B}}{\partial t}\circ\hat{n})dA
-            \end{split}\label{eq:1}
+        Antes de seguir para o detalhamento dos procedimentos experimentais utilizados, dos resultados obtidos e das conclusões retiradas , é importante enunciar os modelos matemáticos (Equações \ref{eq:1}, \ref{eq:2} e \ref{eq:3}) que descrevem os fenômenos físicos observados.
+
+        \begin{equation}\label{eq:1}
+            fem = -\frac{\partial}{\partial t}\int_{S}(\vec{B}\circ\hat{n})dA
         \end{equation}
         
         \begin{equation}\label{eq:2}
-            \oint_{C}\vec{B}\circ d\vec{l} = \mu_0(I_{enc} + \epsilon_0 \frac{d}{dt}\int_{S}(\vec{E}\circ\hat{n})dA)
+            \oint_{C}\vec{E}\circ d\vec{l} = -\int_{S}(\frac{\partial\vec{B}}{\partial t}\circ\hat{n})dA
         \end{equation}
         
-        A equação \ref{eq:1} estabelece que a variação do fluxo magnético num superficie induz uma tensão \textit{em oposição} a dita variação de fluxo. Para fins de compreensão, podemos pensar numa situação semelhante à Figura N, onde 
+        \begin{equation}\label{eq:3}
+            \oint_{C}\vec{B}\circ d\vec{l} = \mu_0(I_{enc}+\epsilon_0\frac{\partial}{\partial t}\int_{S}(\vec{E}\circ\hat{n})dA)
+        \end{equation}
         
-        Já a equação \ref{eq:2} relaciona a presença de uma corrente e um campo elétrico variante no tempo com o surgimento de um campo magnético num caminho fechado.
+        \vspace{0.25cm}
         
-        %
-        %
-        %
+        A Equação \ref{eq:1} estabelece que a variação do fluxo magnético que ``perfura'' uma dada superfície induz uma força eletromotriz em oposição a essa variação no caminho que delimita a superfície. Para fins de compreensão, pode-se pensar em uma situação semelhante à Figura \ref{fig:faraday}, onde a presença de um fluxo magnético variante na área da espira gera uma diferença de potencial e, portanto, uma corrente elétrica no circuito fechado. O sinal negativo presente na equação deriva da lei de Lenz, a qual esclarece que a tensão induzida está em oposição às mudanças no fluxo magnético. 
+        
+        \begin{figure}[H]
+            \centering
+            \frame{\includegraphics[width=0.6\linewidth]{{ET521_LeiDeFaraday.png}}}
+            \caption{Exemplificação da lei de Faraday, retirado de \cite{imagemfaraday}.}
+            \label{fig:faraday}
+        \end{figure}
+        
+        A Equação \ref{eq:2}, apesar de ser equivalente à Equação \ref{eq:1} do ponto de vista matemático, revela uma interpretação física interessante sobre a indução eletromagnética. O campo elétrico gerado contém circulação. Diferentemente do campo elétrico estudado na eletrostática --que não possui circulação--, o campo elétrico induzido contém essa propriedade e, portanto, não é conservativo. Aplicando o Teorema de Stokes na Equação \ref{eq:2}, obtém-se que: $\nabla\times\vec{E}=-\frac{\partial\vec{B}}{\partial t}$, evidenciando a natureza não conservativa do campo.
+        
+        Por fim, a Equação \ref{eq:3} modela o surgimento de um campo magnético em um caminho fechado a partir da corrente envolvida por esse caminho e da variação do campo elétrico. Note que, em muitos casos, essas três leis atuam em conjunto. Ao induzir uma corrente elétrica em um condutor através de um fluxo magnético variável, é criado, consequentemente, um campo magnético variável, o qual, por sua vez, irá interagir com o campo magnético original e assim sucessivamente.
         
         % SEÇÃO DA Bianca
+         \subsection{Indução Eletromagnética}
+         
+         No primeiro experimento, nosso principal objetivo era explorar o fenômeno da indução eletromagnética gerada entre duas bobinas separadas por um núcleo ferromagnético como o da figura a seguir. Buscávamos também compreender as distinções da Lei de Faraday quando aplicada a um sistema de correntes alternadas (AC) e correntes contínuas (DC), além de investigar como a variação de frequência afeta esse processo. 
+        \begin{figure}[H]
+             \centering
+             \frame{\includegraphics[width=0.4\linewidth]{{ET521_transformador.png}}}
+             \caption{Montagem do transformador no experimento de indução eletromagnética.}
+        \end{figure}     
+  
+        A lei de Faraday enunciada na Equação \ref{eq:1} estabelece que uma variação do fluxo magnético através de uma espira condutora gera uma força eletromotriz (fem) nesse condutor. Matematicamente, a força eletromotriz é proporcional à taxa de variação do fluxo magnético. Isso significa que se o campo magnético que atravessa uma espira condutora mudar ao longo do tempo, uma corrente elétrica será induzida no condutor.
         
-        %
-        %
-        %
+        Assim temos que uma tensão e corrente pode ser induzida experimentalmente de duas maneiras distintas, com a variação do campo (B) ou com a variação da área da sessão transversal pela qual o fluxo atravessa.
         
-        % SEÇÃO DO Melvin
+        Para esse experimento foi colocada uma tensão inicialmente alternada no primário de um transformador com Np=600 e verificamos no secundário (Ns=5) valor de corrente e tensão. Foi observado que ao excitar a entrada com uma corrente de 0,67 amperes tivemos aproximadamente 60 amperes na saída. Portanto houve um aumento de 89,55%.
+       
+        Durante a inserção de sinal AC além da indução de uma corrente no secundário do transformador também foi possível identificar a existencia do fluxo variante pelo comportamento de uma bússula que foi colocada próxima ao aparato, a mesma era atraida e repelida a cada semiciclo da tensão de entrada. Mas ai surge a dúvida, "Se a corrente induzida na bobina de cinco espiras fosse retificada, qual seria o efeito sobre a agulha imantada?", neste caso a agulha seria atraída pelo "polo" norte magnético gerado e se manteria nessa posição já que o fluxo teria sentido constante.
+      
+        Se analisarmos agora sua resposta a frequência, sabemos que o transformador não altera a frequência da fonte, ou seja, a amplitude pode mudar, mas a fase e período da onda se mantém constante ao passar por um trafo. Ao submeter o aparato a uma tensão alternada com frequência de 1Hz poderiamos ver a mudança de semiciclo a cada 1 segundo. Continuaríamos observando uma rotação na agulha mas dessa vez de uma forma mais lenta já que cada ciclo levaria 2 segundos.
+        
+ \subsection{Levitação Magnética}
+
+O experimento dos Anéis de Thompson, é uma demonstração clássica dos princípios da indução eletromagnética e por consequência da levitação magnética. No experimento dos Anéis de Thompson, um anel de metal condutor foi colocado em torno de um núcleo de ferro. Sabemos que ao ligar a corrente elétrica no eletroímã, ou quando sua intensidade é variada, o campo magnético ao redor do núcleo de ferro muda, e por consequência o fluxo também.
+
+A variação do campo magnético induz correntes elétricas no anel de metal. Essas correntes são conhecidas como correntes de Foucault. As correntes de Foucault, por sua vez, criam seus próprios campos magnéticos, que se opõem à mudança do campo magnético original que as induziu, de acordo com a lei de Lenz. 
+
+Se a intensidade da corrente no eletroímã é suficientemente alta, o campo magnético gerado pelas correntes de Foucault no anel pode ser forte o suficiente para causar uma força de repulsão entre o anel e o eletroímã. Se essa força de repulsão tende a força da gravidade atuando no anel, causando assim a levitação do anel.
+
+Iniciamos o experimento com apenas um anel, e fomos adicionando outros em seguida. Assim foi possíve observar que quanto maior a área do material condutor, maior o campo oposto gerado e mais alto o(s) anel(is) levita(m).
+
+        %VOCE PRECISA COLOCAR AS IMAGENS EM Imagens/Sem01 À TUA ESQUERDA NESTE SITE. PARA FAZER ISSO, APERTA O NOME Sem01 E APERTA A SETA (apontando para baixo) QUE APARECE NO BOTAO VERMELHO EM CIMA. AI APERTA UPLOAD FILE.
+        %\begin{figure}[H]
+        %    \centering
+        %    \frame{\includegraphics[width=0.6\linewidth]{%COLOCA AQUI O NOME DA IMAGEM}}}
+         %   \caption{} %INSERE AQUI A DESCRICAO DA IMAGEM
+        %    \medskip
+        %    \small
+        %    \label{fig:ABCcomparison} %PARA REFERENCIAR DA UM NOME A ESSA IMAGEM
+        %\end{figure}
         
         \subsection{Freio Eletromagnético}
         
-        %A CORRENTE QUE ESTA SENDO INDUZIDA É CONHECIDA COMO CORRENTE DE FOCAULT https://en.wikipedia.org/wiki/Eddy_current, PRECISO FALAR SOBRE ISSO
-        % NA SEGUNDA PLACA ESTAMOS TENDO UM EFEITO SEMELHANTE ÁS LAMINAÇÕES USADAS NO NUCLEO DE TRANSFORMADORES PARA REDUZIR A INTENSIDADE DA CORRENTE PARASITA
+        O experimento foi montado conforme mostrado na Figura \ref{fig:montagem}.a, onde utilizamos duas placas metálicas condutoras, mostradas na Figura \ref{fig:montagem}.b. Cada placa foi colocada no meio do entreferro no núcleo que passa pelo nosso eletroimã, onde a placa irá se movimentar perpendicularmente á ponta do núcleo, mantendo um movimento oscilatório igual ao de um pêndulo.
         
-        O experimento foi montado conforme mostrado na Figura N, onde utilizamos dois tipos de placas metálicas distintas, mostradas na Figura N. Cada placa foi colocada no meio do entreferro no núcleo que passa pelo nosso eletroimã, onde a placa irá se movimentar perpendicularmente á ponta do núcleo, mantendo um movimento oscilatório igual ao de um pêndulo.
+        \begin{figure}[H]
+            \begin{subfigure}{.5\textwidth}
+                \centering
+                \frame{\includegraphics[height=60mm]{{ET521_MontagemFreio.jpeg}}}
+                \caption{Montagem do freio eletromagnético realizado no laboratório}
+            \end{subfigure}
+            \begin{subfigure}{.5\textwidth}
+                \centering
+                \includegraphics[height=60mm]{{ET521_Lamina1.png}}
+                \caption{Duas placas utilizadas para a realização do experimento}
+            \end{subfigure}
+            \caption{Apresentação dos componentes importantes para a realização do experimento}
+            \label{fig:montagem}
+        \end{figure}
+
+        Conforme visto na sala de aula, nesta montagem podemos perceber um freiamento nos movimentos da nossa lâmina após o estabelecimento de um fluxo magnético (e como consequência, um campo magnético) no material ferromagnético, fazendo que a nossa lámina pare com seu movimento oscilante de maneira precoce. Em termos gerais, graças à constante variação da área em contato com o fluxo magnético do núcleo, surge uma corrente parasita dentro da nossa placa (como descrito pela Equação \ref{eq:2}) que induz um campo magnético em oposição a aquele estabelecido pelo eletroimã (Equação \ref{eq:3}). A interação entre estes dois campos faz com que a placa experimente uma força em oposição ao seu movimento. Podemos compreender estas relações olhando para a Figura \ref{fig:eddy}.
         
-        %INSERIR FOTO DA MONTAGEM DO Freio
-        %INSERIR DESENHO DAS PLACAS UTILIZADAS NO EXPERIMENTO
+        \begin{figure}[H]
+            \centering
+            \frame{\includegraphics[width=0.6\linewidth]{{ET521_EddyCurrents_R1.png}}}
+            \caption{Diagrama mostrando o efeito do freio magnético, obtido de \cite{imagemeddy}}
+            \label{fig:eddy}
+        \end{figure}
         
-        Conforme visto na sala de aula, nesta montagem podemos perceber um freiamento nos movimentos da nossa lâmina após o estabelecimento de um fluxo magnético (e como consequência, um campo magnético) no material ferromagnético, fazendo que a nossa lámina pare com seu movimento oscilante de maneira precoce. Este amortecimento é devido á interação entre a corrente induzida na nossa placa (por conta da constante variação da área em contato com o fluxo magnético, como descrito pela Equação de Maxwell-Faraday) e o campo magnético estabelecido graças ao imã. O experimento foi realizado utilizando tanto corrente AC como corrente DC nas espiras, variando a corrente de alimentação do circuito entre 0-2 amperes.
+        Por conta do movimento da placa metálica surgiram correntes dentro dela se movendo numa trajetória circular. Como elas estão variando com o tempo (como consequência do movimento da placa) estamos induzindo um campo magnético (representado pelas setas azueis) que no final aplicam uma força de freiamento na placa.
         
-        O maior amortecimento no movimento oscilatório foi observado ao ativarmos o eletroimã com uma \textbf{corrente DC}, onde por conta da corrente contínua estabelecemos um fluxo magnético constante que, ao não termos oscilação (comparado com a corrente AC) aplica uma força de amortecimento continuamente sobre nossa placa metálica conforme descrito pela seguinte equação: . Observamos uma relação que parece ser diretamente proporcional entre a magnitude da corrente passando nas espiras e a intensidade do efeito de amortecimento, pelo fato que ao aplicarmos uma corrente maior, o movimento da placa parou bastante mais rápido.
+        O experimento foi realizado utilizando tanto corrente AC como corrente DC nas espiras, variando a sua magnitude de 0A até 2A. O maior amortecimento no movimento oscilatório foi observado ao ativarmos o eletroimã com \textbf{corrente DC}, onde por conta da linearidade da corrente estabelecemos um fluxo magnético que, ao não ser oscilante (comparado com a corrente AC), aplica uma força de amortecimento constante sobre nossa placa metálica. Observamos uma relação que parece ser diretamente proporcional entre a magnitude da corrente passando nas espiras e a intensidade do efeito de amortecimento, pelo fato que ao aplicarmos uma corrente maior, o movimento da placa parou bastante mais rápido.
         
-        Ao induzirmos uma \textbf{corrente AC} conseguimos observar o mesmo efeito de amortecimento, mas desta vez com menor intensidade, muito provavelmente devido á constante variação no sentido tanto do fluxo como da corrente induzida na placa. Desta forma temos menos força sendo aplicada em média, pelo qual o efeito não é tão forte como observado anteriormente. Além disso, houve um comportamento bastante interessante que observamos, ao manter a placa metálica no meio do núcleo, ela vibra numa frequência perceptível ao tato. Podemos assumir que para frequências baixas a vibração tornaria-se perceptível ao olho.
+        Ao induzirmos uma \textbf{corrente AC} conseguimos observar o mesmo efeito de amortecimento, mas desta vez com menor intensidade, provavelmente devido á constante variação de sentido tanto do fluxo como da corrente induzida na placa. Por conta da natureza harmônica da alimentação temos menos força sendo aplicada em média, pelo qual o efeito não é tão forte como observado anteriormente. Além disso, ao manter a placa metálica no meio do núcleo sentiu-se uma vibração perceptível ao tato. Assume-se que para frequências suficientemente baixas ia se observar movimento na placa.
+        
+        Para finalizar o experimento, trocamos a placa de área uniforme por aquela com cortes e induzimos um campo magnético no núcleo. Ao movimentar esta nova placa percebeu-se que houve uma força de freiamento muito menor, se assemelhando ao movimento da placa sem um campo magnético interagindo com ela. Para explicar este efeito precisamos nos lembrar que o componente agindo na geração desta força é o campo magnético que a corrente dentro da placa induz. Dessa vez, ao realizarmos os cortes na placa também reduzimos sua área efetiva, limitando a presença e magnitude das correntes parasita que o nosso fluxo magnético estaria induzindo. Ao termos uma menor presença de corrente parasita também estamos limitando a força que o seu campo estaria gerando. Logo, o nosso freio magnético é menos efetivo.
         
         \subsection{Balanço Magnético}
+                
+        \begin{figure}[H]
+             \centering
+             \frame{\includegraphics[width=0.4\linewidth]{{ET521_MontagemBalanco.jpeg}}}
+             \caption{Montagem do balanço magnético}
+             \label{fig:balanco}
+        \end{figure}
         
-        Neste experimento conseguimos observar o surgimento de uma força na interação entre um elemento de corrente e um campo magnético constante, como é previsto pela equação \ref{eq:3}. Lembrando da nossa definição do campo magnético $\vec{B}$ como força por unidade de elemento de corrente, fica claro que ao termos uma montagem como aquela apresentada na Figura N, ao fechar o circuito iremos ter uma atração ou repulsão dependendo da polaridade da nossa corrente.
-        
-        %INSERIR FOTO DA MONTAGEM DO EXPERIMENTO
-        
-        \begin{equation}\label{eq:3}
+        \begin{equation}\label{eq:4}
             \vec{F} = \oint_{C}Id\vec{l}\times\vec{B}
         \end{equation}
         
-        Detalhando mais, sabemos 
+        Neste experimento observa-se o surgimento de uma força na interação entre um elemento de corrente e um campo magnético constante gerado por um imã permanente, como é previsto pela equação \ref{eq:4} retirada de \cite{cheng}. Lembrando da nossa definição de campo magnético ($\vec{H}$) como força por unidade de elemento de corrente, fica claro que ao fecharmos um circuito cuja montagem segue aquela apresentada na Figura \ref{fig:balanco} haverá atração ou repulsão do nosso elemento filamentar.
         
-        %INSERIR FOTO COM DUAS SUBFIGURAS, UMA COM A BARRA MAIS PARA DENTRO, OUTRA COM A BARRA MAIS PARA FORA
+        Esta atração acontece por conta do surgimento de um campo magnético no nosso condutor em resposta à corrente estabelecida nele (equação \ref{eq:3}). Como sabemos, na magnetostática o campo magnético induzido interage com o campo magnético do imã permanente, tendo uma atração ou repulsão dependo do sentido da corrente (e como consequência, o sentido do campo no condutor). Caso o experimento for realizado com corrente AC, precisariamos de uma frequência bastante baixa para perceber a oscilação do nosso condutor no meio do campo estabelecido pelo imã.
         
-        %
-        %
-        %
+       Ao realizar o experimento alimentamos nosso circuito com duas polaridades de corrente distintas levando á mundança de estado apresentado na Figura 2.
 
-        % SEÇÃO DO Ivan
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{.3\textwidth}
+                \centering
+                \frame{\includegraphics[height=40mm]{{ET521_Repouso.jpeg}}}
+                \caption{Estado de repouso}
+            \end{subfigure}
+            \begin{subfigure}{.3\textwidth}
+                \centering
+                \frame{\includegraphics[height=40mm]{{ET521_Atracao.jpeg}}}
+                \caption{Estado de atração}
+            \end{subfigure}
+            \begin{subfigure}{.3\textwidth}
+                \centering
+                \frame{\includegraphics[height=40mm]{{ET521_Repulsao.jpeg}}}
+                \caption{Estado de repulsão}
+            \end{subfigure}
+            \caption{Força aplicada num condutor com corrente devido a um imã permanente.}
+            \label{fig:montagembalanco}
+        \end{figure}
         
-        %
-        %
-        %
+        Perceba-se que o nosso condutor foi do repouso (Figura \ref{fig:montagembalanco}.a) a outras duas posições (Figura \ref{fig:montagembalanco}.b  e Figura \ref{fig:montagembalanco}.c) dependendo da polaridade da tensão que colocamos nos seus terminais
         
-        % SEÇÃO DO Vinícius
+        \subsection{Medidores eletromagnéticos}
+        
+        Neste experimento, montou-se um aparato com o objetivo de verificar a possibilidade de mensurar grandezas elétricas por meio do fenômeno da indução. Inicialmente, utilizando uma fonte de tensão alternada, duas bobinas com eletroímãs no centro de cada uma, posiciona-se uma pequena bobina móvel com um ponteiro acoplado, conforme mostrando na Figura \ref{fig:montagemgalvanometro}. 
+        
+        \begin{figure}[H]
+             \centering
+             \frame{\includegraphics[width=0.3\linewidth]{{ET521_Galvanometro_AC.png}}}
+             \caption{Montagem do galvanometro da bobina movel em corrente alternada.}
+             \label{montagemgalvanometro}
+        \end{figure}
+        
+        Ao variarmos a tensão na fonte trifásica, alteramos a corrente que flui para as bobinas fixas. Devido à presença de uma corrente elétrica na bobina, temos cargas elétricas em movimento nos fios, o que ocasiona o surgimento de um campo magnético ao redor do eletroímã. Conforme a lei circuital de Ampère, a presença de corrente elétrica em um fio permite quantificar o campo magnético gerado pela bobina. Quando as duas bobinas fixas são alimentadas, o campo magnético resultante prevalece na direção do campo de maior magnitude.
+        
+        \begin{equation}
+             \oint_C {Hd\ell = N I_C }
+        \end{equation}
+        
+        Então, a interação entre o campo e uma bobina móvel por onde passa corrente leva à existência de uma força magnética sobre a bobina móvel, de forma que um torque seja aplicado tanto sobre a bobina quanto sobre a seta acoplada a ela. Esse torque varia conforme variamos a tensão da fonte trifásica, de maneira que é possível estimar a corrente na bobina a partir da angulação do ponteiro. No entanto, em correntes alternadas, que variam seu valor entre positivo e negativo mas mantêm a mesma magnitude, os sentidos dos campos serão opostos, de modo que os torques aplicados vão se cancelar. Dessa maneira, só é possível avaliar a angulação da seta a partir da mudança de tensão na fonte.
+        
+        Ao utilizarmos corrente contínua para a alimentação das bobinas, por meio de um retificador de corrente alternada, a variação no fluxo magnético ocorre apenas nos momentos em que a tensão é alterada manualmente. Portanto, a uma tensão constante, o campo magnético ao redor das bobinas permanece estável, sem variação, e não induz um torque na bobina móvel. Dessa forma, tanto para corrente contínua quanto para corrente alternada, a angulação da seta sobre a bobina móvel só pode ser verificada a partir da mudança de tensão. Isso ocorre porque, em ambos os casos, a força aplicada, e consequentemente o torque induzido na bobina móvel, é nula quando a tensão se estabiliza. 
+        
+        \begin{figure}[H]
+             \centering
+             \frame{\includegraphics[width=0.4\linewidth]{{ET521_Galvanometro_CC.png}}}
+             \caption{Montagem do galvanometro da bobina movel em corrente continua.}
+        \end{figure}
+        
+        Ao modificar a instalação para conectar apenas uma bobina à tensão alternada, com um núcleo de ferro móvel em seu interior, observa-se que, ao aplicar uma tensão na bobina e alterar seu valor, o ferro móvel muda de posição. Essa mudança de posição do ferro móvel é resultado de um torque aplicado, originado pela força magnética que surge da variação da corrente na bobina. No entanto, ao utilizar uma corrente alternada que possui o mesmo módulo, mas varia de maneira que seus sinais alterem, as forças resultantes se cancelam devido às suas direções opostas nos ciclos de variação da corrente.
+        
+        Ao converter a tensão variável no tempo para uma contínua, por meio de um retificador, observa-se novamente que a mudança no ferro móvel ocorre apenas quando o módulo da tensão na fonte é alterado, resultando em uma variação da corrente na bobina e, consequentemente, alterando o fluxo magnético. Após essa alteração, ferro móvel se estabiliza e o seu movimento no núcle cessa.
+        
+        \begin{figure}[H]
+             \centering
+             \frame{\includegraphics[width=0.4\linewidth]{{ET521_Ferro_Movel.png}}}
+             \caption{Montagem do galvanometro de ferro movel.}
+        \end{figure}
+        
+        Portanto, nos dois experimentos realizados, foi possível verificar fisicamente o fenômeno da indução eletromagnética por meio do torque originado de um campo magnético induzido. Tanto para a seta do galvanômetro de bobina móvel como também para o núcleo de ferro móvel, as alterações da tensão na fonte, que resultam em uma variação da corrente na bobina e, consequentemente, no surgimento de um campo magnético variável no tempo, são responsáveis por gerar uma força sobre os objetos. Essa força resulta em um torque que pode ser utilizado para mensurar a variação da corrente aplicada.
         
         \subsection{Laço de Histerese}
         
-        Certo. Amanhã, vou completar esta seção e revisar as questões pré-laboratoriais e a introdução. Na quinta, vou estar livre para ajudar quem não tiver completado a sua seção ainda. Estamos bem com o prazo. Tenho um resumo em mente de cada parte do experimento. Logo, não será problema descrever algumas coisas a mais aqui e ali, se necessário.
+        Os materiais magnéticos, de modo geral, podem ser classificados em: diamagnéticos, paramagnéticos e ferromagnéticos. Enquanto os dois primeiros são lineares, isto é, apresentam uma relação linear entre a densidade de fluxo magnético e a intensidade de campo magnético (dada por: $\vec{B}=\mu\vec{H}$), os materiais ferromagnéticos não são lineares. A relação entre $\vec{B}$ e $\vec{H}$ deles somente pode ser descrita pela curva de magnetização.
         
-        %\section{Conclusão} % Basta manter esta linha comentada se, de fato, não houver uma conclusão geral.
+        A curva de magnetização é composta por dois elementos principais, sendo eles: a curva de magnetização inicial (ou curva virgem) e o laço de histerese (Figura \ref{fig:curvabh}). Quando um material ferromagnético é submetido a um campo magnético externo pela primeira vez, a densidade de fluxo magnético acompanha de modo não linear a intensidade de campo magnético até a região de saturação, onde encontram-se os valores máximos de $\vec{B}$ e $\vec{H}$. À medida que $\vec{H}$ diminui, $\vec{B}$ não segue a curva inicial, dando origem a um ``atraso'' de $\vec{B}$ em relação a $\vec{H}$ denominado histerese. Por isso, o laço que engloba a curva de magnetização inicial é conhecido como laço de histerese.
         
-    % Início das questões pré-laboratoriais
-    \newpage
+        \begin{figure}[H]
+            \centering
+            \frame{\includegraphics[height=50mm]{{et521_curvabh.jpeg}}}
+            \caption{Curva de magnetização (ou curva B-H) típica, retirado de \cite{sadiku}.}
+            \label{fig:curvabh}
+        \end{figure}
         
-        \section{Questões Pré-laboratoriais}
+        Quando o campo magnético externo é removido, os materiais ferromagnéticos retêm um grau considerável de magnetização. A densidade de fluxo magnético observada no material quando a intensidade de campo magnético é nula é referida como densidade de fluxo remanente ($B_r$). A intensidade de campo magnético necessária para anular a densidade de fluxo magnético do material é referida como campo magnético coercitivo ($H_c$). A energia absorvida, por unidade de volume, para magnetizar e desmagnetizar o material durante um ciclo de magnetização períodica é conhecida como perda histerética e é dada pela área do laço de histerese.
         
-        Nesta seção respondimos as questões preparatórias para o laboratório descrito neste relatório. 
+        Em laboratório, é possível visualizar o laço de histerese através de um osciloscópio e um circuito elétrico simples acoplado ao material magnético de interesse (Figura \ref{fig:circuito}). A última parte deste experimento foi direcionada a essa montagem. Foram utilizados dois resistores, um capacitor, um transformador (com o núcleo de material ferromagnético), uma fonte de tensão alternada e um osciloscópio. Pela lei de Maxwell-Ampère (Equação \ref{eq:3}), sabe-se que a intensidade de campo magnético é diretamente proporcional à corrente, cuja intensidade é medida indiretamente pela tensão sobre o resistor conectado em série ao enrolamento primário do transformador. Além disso, pela lei de Faraday (Equação \ref{eq:1}), sabe-se que a tensão induzida no enrolamento secundário do transformador, cuja intensidade é medida pela tensão sobre o capacitor, é diretamente proporcional à densidade de fluxo magnético. Logo, é viável construir um gráfico de $V_{capacitor}$ por $V_{resistor}$ proporcional ao gráfico de $\vec{B}$ por $\vec{H}$, permitindo a visualização do laço.
+        
+        \begin{figure}[H]
+            \begin{center}
+                \begin{circuitikz} 
+                    \draw 
+                    (4,2) node[transformer core](T){}
+                    (T.A1) to[short] (0,2) coordinate (aux1)
+                           to[vsourcesin, l_=V(t)] (aux1 |- T.A2) coordinate (aux3)
+                           to[resistor, l=R1] (T.A2)
+                    (T.B1) to[resistor, l=R2] + (3,0) coordinate (aux2)
+                           to[capacitor, l=C1] (aux2 |- T.B2)
+                           to[short] (T.B2);
+                    \draw
+                    (aux3) to[short, *-] + (0,-1.5) coordinate (aux4)
+                           to[voltmeter, l=$V_{resistor}$] (aux4 -| T.A2)
+                           to[short, -*] (T.A2);
+                    \draw
+                    (aux2) to[short, *-] + (2,0) coordinate (aux5)
+                           to[voltmeter, l=$V_{capacitor}$] (aux5 |- T.B2)
+                           to[short, -*] (aux2 |- T.B2) -- (T.B2);
+                \end{circuitikz}
+                \caption{Diagrama do circuito montado para a visualização do laço de histere.}
+                \label{fig:circuito}
+            \end{center}
+        \end{figure}
+        
+        Na Figura \ref{fig:transformador01}.a, observa-se o circuito montado com o primeiro transformador. A tensão alternada aplicada sobre ele foi de 70 $V_{rms}$. Na Figura \ref{fig:transformador01}.b, encontra-se o laço de histerese obtido para o material magnético do núcleo do transformador em questão. Note como a área do gráfico é relativamente grande e as regiões de saturação são ligeiramente abauladas. Esses efeitos são resultados, respectivamente, das perdas histeréticas e das correntes parasitas induzidas no núcleo.
+        
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{.375\textwidth}
+                \centering
+                \frame{\includegraphics[height=50mm]{{et521_transformador01.jpeg}}}
+                \caption{Circuito montado}
+            \end{subfigure}
+            \begin{subfigure}{.375\textwidth}
+                \centering
+                \frame{\includegraphics[height=50mm]{{et521_laco01.jpeg}}}
+                \caption{Laço de histerese}
+            \end{subfigure}
+            \caption{Medição do laço de histerese do transformador com núcleo maciço.}
+            \label{fig:transformador01}
+        \end{figure}
+        
+        Nas Figuras \ref{fig:transformador02}.a e \ref{fig:transformador03}.a, observam-se os circuitos montados com outros dois transformadores. O núcleo do transformador da Figura \ref{fig:transformador02}.a não é maciço como o transformador anterior. Ele é laminado, isto é, composto de lâminas de material ferromagnético unidas lado a lado. O objetivo desse método de construção é reduzir o surgimento e o impacto das correntes parasitas. Por este motivo, na Figura \ref{fig:transformador02}.b, o laço de histere, para a mesma escala do caso anterior, é mais estreito e menos abaulado nas regiões de histerese. Ou seja, as perdas histeréticas e por correntes parasitas são menores no segundo transformador. Ademais, se parte do núcleo é removido, como é o caso do transformador da Figura \ref{fig:transformador03}.a, cria-se um laço distorcido. O estiramento horizontal da curva ocorre devido ao aumento da relutância no circuito magnético. Como a relutância do entreferro é muito maior que a relutância da parte restante do núcleo, a relação entre $\vec{B}$ e $\vec{H}$ tende para a relação entre essas duas grandezas no ar. Logo, o laço se aproxima de uma reta com coeficiente angular igual a permeabilidade magnética do ar ($\approx\mu_0$), como observado na Figura \ref{fig:transformador03}.b.
+        
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{.375\textwidth}
+                \centering
+                \frame{\includegraphics[height=50mm]{{et521_transformador02.jpeg}}}
+                \caption{Circuito montado}
+            \end{subfigure}
+            \begin{subfigure}{.375\textwidth}
+                \centering
+                \frame{\includegraphics[height=50mm]{{et521_laco02.jpeg}}}
+                \caption{Laço de histerese}
+            \end{subfigure}
+            \caption{Medição do laço de histerese do transformador com núcleo laminado.}
+            \label{fig:transformador02}
+        \end{figure}
+        
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{.375\textwidth}
+                \centering
+                \frame{\includegraphics[height=50mm]{{et521_transformador03.jpeg}}}
+                \caption{Circuito montado}
+            \end{subfigure}
+            \begin{subfigure}{.375\textwidth}
+                \centering
+                \frame{\includegraphics[height=50mm]{{et521_laco03.jpeg}}}
+                \caption{Laço de histerese}
+            \end{subfigure}
+            \caption{Medição do laço de histerese do transformador com entreferro.}
+            \label{fig:transformador03}
+        \end{figure}
+        
+        %\section{Conclusão}
+
+    \clearpage
+        
+        \section{Questões de Preparação}
+        
+        Nesta seção, encontram-se as respostas das questões de preparação para o laboratório, isto é, das questões respondidas antes da aula.
+        
+        \vspace{0.25cm}
         
         \begin{questions}
             Como é possível obter tensões (ou correntes) elétricas a partir de fluxo magnético? Exemplifique com duas alternativas distintas.
         \end{questions}
-            
-        Partindo do fluxo magnético, é possível obter tensão e corrente elétrica por conta da Lei de Faraday:
-        \begin{equation}
-            fem = -\frac{d}{dt}\int_{S}\vec{B}\circ\hat{n}dA 
-        \end{equation}
+
+        \vspace{0.25cm}
         
-        Sabe-se que a variação do fluxo magnético ao longo do tempo sobre um circuito fechado produz uma força eletromotriz (fem) que induz o movimento dos elétrons, isto é, induz uma corrente elétrica, em \textbf{oposição} a essa variação de fluxo. Para observar esse fenômeno, poder-se-ia movimentar um eletroímã contra um circuito fechado repetidamente ou chavear uma fonte de tensão conectada a uma bobina e observar os efeitos em um circuito fechado próximo. Nos dois casos, iria se perceber o estabelecimento de uma tensão (e corrente) em resposta ás variações geradas no fluxo magnético. 
+        Sabe-se que a variação do fluxo magnético ao longo do tempo sobre um circuito fechado produz uma força eletromotriz (fem) que induz o movimento dos elétrons, isto é, induz uma corrente elétrica, em oposição a essa variação. Para observar esse fenômeno, poder-se-ia movimentar um eletroímã contra um circuito fechado repetidamente ou chavear uma fonte de tensão conectada a uma bobina e observar os efeitos em um circuito fechado próximo. Nos dois casos, perceber-se-ia o estabelecimento de tensões (e correntes) em resposta às variações do fluxo magnético.
+        
+        \vspace{0.25cm}
         
         \begin{questions}
             Na distribuição do campo magnético obtida através de um eletroímã com núcleo em forma de U sob a placa de acrílico:
@@ -262,9 +440,13 @@
             \end{itemize}
         \end{questions}
         
-        \textbf{(a)} Existe, sim. Embora ambas sejam capazes de gerar campo magnético, a corrente alternada produziria um campo magnético oscilante em sentido. Ou seja, a distribuição seria a mesma, mas o sentido do campo magnético alternaria devido às mudanças no sentido da corrente. A presença deste tipo de campo magnético implica em maiores perdas energéticas no nosso núcleo, se manifestando na forma de energia térmica. No caso da montagem no vídeo, em baixas frequências poderia se perceber as mudanças em sentido do campo magnético.
+        \vspace{-0.45cm}
         
-        \textbf{(b)} 
+        \noindent{\textbf{(a)} Sim. Embora ambas sejam capazes de gerar campo magnético, a corrente alternada produziria um campo magnético oscilante. Ou seja, a distribuição seria a mesma, mas o sentido do campo magnético alternaria constantemente devido às mudanças no sentido da corrente. Além disso, em um nucléo ferromagnético, a presença de um campo magnético variável implicaria maiores perdas energéticas, que se manifestariam como energia térmica.}
+        
+        \noindent{\textbf{(b)}} Sim, dependo do tipo de material magnético espalhado sob a placa. Caso o material fosse ferromagnético ele irá reagir com o campo magnético induzido intensificando-o em certas regiões da sua distribuição. Além disso, precisamos nos lembrar que após multiplos ciclos de magnetização e desmagnetização a distribuição sob o acrílico iria mudar, por conta da magnetização remanente no material. Assim, após vários ciclos de uso, iriamos notar uma distribuição ligeiramente adulterada comparado com a original.
+        
+        \vspace{0.25cm}
         
         \begin{questions}
             Na montagem identificada como anéis de Thompson:
@@ -274,41 +456,57 @@
             \end{itemize}
         \end{questions}
         
-        \textbf{(a)} Ao ligarmos a fonte de alimentação e gerarmos um fluxo magnético, como dito pela Lei de Faraday, pela variação momentânea do fluxo magnético estaremos induzindo uma corrente elétrica sobre o circuito fechado (o anel), que por sua vez gera um campo magnético em oposição ao campo magnético externo. Se o circuito for leve o suficiente e o campo for intenso, é possível que ocorra a levitação magnética (tal como um imã repelindo outro no eixo vertical).
+        \vspace{-0.45cm}
         
-        \textbf{(b)} Uma frequência maior implicaria em maior força de repulsão sobre o anel. Lembrando que pela lei de Faraday uma maior variação no fluxo induziria uma maior força eletromotriz, que pela sua vez geraria uma corrente no circuito fechado que no final iria induzir um campo magnético ainda mais forte em oposição ao campo magnético externo.
+        \noindent{\textbf{(a)} Ao ligar a fonte de alimentação, um campo magnético e, consequentemente, um fluxo magnético variável é gerado no núcleo ferromagnético. Com isso, uma corrente elétrica é induzida sobre o circuito fechado formado pelo anel. A corrente do anel, por sua vez, gera, pelo mesmo princípio que gera o campo no núcleo, um campo magnético em oposição ao campo externo. Se o circuito for leve o suficiente e o campo for intenso, é possível que ocorra a levitação magnética (tal como um ímã repelindo outro no eixo vertical).}
+        
+        \noindent{\textbf{(b)} Pela lei de Faraday, a intensidade da força eletromotriz induzida é proporcional à taxa de variação do fluxo magnético. Se a frequência aumenta, o período das mudanças do fluxo magnético diminui e a taxa de variação e a força eletromotriz aumentam. Se a força eletromotriz é maior, a corrente elétrica induzida é proporcionalmente maior e, portanto, o campo magnético gerado pelos anéis é mais intenso. Logo, a interação com o campo magnético do núcleo ferromagnético é mais forte. Ou seja, uma frequência maior implicaria maior força sobre o anel.}
+        
+        \vspace{0.25cm}
         
         \begin{questions}
             Desenhe o circuito utilizado para a visualização do laço de histerese do material magnético de um dispositivo eletromagnético e esboce os laços de histerese obtidos com a bobina em núcleo fechado e com um dos enrolamentos do transformador preto. Comente a respeito.
         \end{questions}
         
-        \begin{figure}[h!]
+        \vspace{0.25cm}
+        
+        O circuito, como observado no desenho a seguir, constitui-se de uma fonte de tensão alternada em série com um resistor e o primário de um transformador, cujo núcleo contém o material ferromagnético. O secundário do transformador é conectado a um circuito RC. A tensão sobre o resistor do primário é proporcional ao campo magnético e a tensão sobre o capacitor do secundário é proporcional à densidade de fluxo. No osciloscópio, um gráfico X por Y (sem a base de tempo) mostra o laço de histerese.
+        
+        \begin{figure}[H]
             \begin{center}
-                \begin{circuitikz}
-                \draw (0,0)
-                to[V,v=$U_q$] (0,2) % The voltage source
-                to[short] (2,2)
-                to[R=$R_1$] (2,0) % The resistor
-                to[short] (0,0);
+                \begin{circuitikz} 
+                    \draw 
+                    (4,2) node[transformer core](T){}
+                    (T.A1) to[short] (0,2) coordinate (aux1)
+                           to[vsourcesin, l_=V(t)] (aux1 |- T.A2) coordinate (aux3)
+                           to[resistor, l=R1] (T.A2)
+                    (T.B1) to[resistor, l=R2] + (3,0) coordinate (aux2)
+                           to[capacitor, l=C1] (aux2 |- T.B2)
+                           to[short] (T.B2);
+                    \draw
+                    (aux3) to[short, *-] + (0,-1.5) coordinate (aux4)
+                           to[voltmeter, l=$V_{resistor}$] (aux4 -| T.A2)
+                           to[short, -*] (T.A2);
+                    \draw
+                    (aux2) to[short, *-] + (2,0) coordinate (aux5)
+                           to[voltmeter, l=$V_{capacitor}$] (aux5 |- T.B2)
+                           to[short, -*] (aux2 |- T.B2) -- (T.B2);
                 \end{circuitikz}
-                \caption{My first circuit.}
+                \caption{Diagrama do circuito montado para a visualização do laço de histere.}
+                \label{fig:circuitoteste}
             \end{center}
         \end{figure}
         
-        Basicamente, é uma fonte de tensão alternada em série com um resistor e o primário de um transformador (que contém um material ferromagnético). O secundário do transformador é conectado a um circuito RC. A tensão sobre o resistor do primário é proporcional ao campo magnético e a tensão sobre o capacitor no secundário é proporcional à densidade de fluxo. No osciloscópio, um gráfico X por Y (sem o tempo) mostra o laço de histerese.
-        
         \begin{questions}
-            O que é essencial para o funcionamento tanto do experimento de Ruhmkorff como da ignição automotiva tradicional? Qual é a diferença básica entre eles, sob o ponto de vista eletromagnético
+            O que é essencial para o funcionamento tanto do experimento de Ruhmkorff como da ignição automotiva tradicional? Qual é a diferença básica entre eles, sob o ponto de vista eletromagnético?
         \end{questions}
         
-        Em ambos os casos, uma bobina deve possuir poucos enrolamentos e a outra deve possuir inúmeros (milhares) de enrolamentos. O objetivo disso é aumentar a quantidade de fluxo concatenado (enlaçado) e, portanto, aumentar a tensão. De modo simplificado, a bobina de Ruhmkorff é um elevador de tensão. Capaz de produzir milhares de volts com baterias de 6 ou 8 V. Não encontrei a diferença entre as bobinas.
+        \vspace{0.25cm}
         
-    % Início das referências
+        Em ambos os casos, deve haver duas bobinas, uma com poucas espiras e outra com inúmeras (milhares) de espiras. O objetivo disso é aumentar, na segunda espira, a quantidade de fluxo concatenado (enlaçado) e, portanto, aumentar a tensão. De modo simplificado, a bobina de Ruhmkorff é um elevador de tensão. Capaz de produzir milhares de volts com baterias de 6 ou 8 V.
+
     \newpage
     
-        \section{Referências} % Se não houver referências, basta comentar esta linha.
-    
-    % \printbibliography % Sem isso, o LaTeX precisa de citações para acrescentar a bibliografia
+    \printbibliography
 
-% Término do documento
 \end{document}
